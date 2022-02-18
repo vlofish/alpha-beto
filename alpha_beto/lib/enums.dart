@@ -1,0 +1,4 @@
+enum CardType {
+  text,
+  image,
+}
