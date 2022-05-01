@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'enums.dart';
+import 'card_widget.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -11,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Alpha Beto',
+      title: 'Alfa Beto',
       theme: ThemeData(primarySwatch: Colors.orange),
       home: const MyHomePage(title: 'El Alfa-Beto'),
     );
@@ -83,7 +86,11 @@ class AlphabetWidget extends StatelessWidget {
   }
 
   Widget alphabetWidget() {
-    const cardsWidgetArray = [CardWidget(), CardWidget()];
+    const cardsWidgetArray = [
+      CardWidget(cardType: CardType.text, cardInfo: 'A'),
+      CardWidget(
+          cardType: CardType.text, cardInfo: 'a url/pointing/to an/image')
+    ];
 
     if (orientation == Orientation.portrait) {
       return Column(
@@ -95,30 +102,6 @@ class AlphabetWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: centerAlignment,
       children: cardsWidgetArray,
-    );
-  }
-}
-
-class CardWidget extends StatelessWidget {
-  const CardWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      child: InkWell(
-        splashColor: Colors.orange.withAlpha(30),
-        onTap: () {
-          print('Hello Card Widget.');
-        },
-        child: const SizedBox(
-          width: 100,
-          height: 100,
-          child: Text(
-            'A',
-            textAlign: TextAlign.center,
-          ),
-        ),
-      ),
     );
   }
 }
